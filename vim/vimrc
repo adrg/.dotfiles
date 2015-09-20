@@ -1,0 +1,100 @@
+" =================================================
+" = Author: Adrian-George Bostan <adi@fractor.ro> =
+" = Version: 1.0                                  =
+" =================================================
+
+"Gui options
+if has("gui_running")
+    set guioptions-=m                "Remove menu bar
+    set guioptions-=T                "Remove toolbar
+    set guioptions-=r                "Remove right-hand scroll bar
+endif
+
+"General config
+set nocompatible                     "Set vim mode for commands
+set number                           "Line numbers
+set backspace=indent,eol,start       "Allow backspace in insert mode
+set history=1000                     "History items remembered
+set showcmd                          "Show incomplete cmds at the bottom
+set showmode                         "Show current mode at the bottom
+set gcr=a:blinkon0                   "Disable cursor blinks
+set autoread                         "Reload files changed outside vim
+set hid                              "Buffer becomes invisible when abandoned
+set undolevels=1000                  "Undo levels remembered
+set cpoptions+=$                     "Use $ delimiter to mark change' end
+set wildmenu                         "Make the command line completion better
+set colorcolumn=80                   "80th column marked
+set list listchars=tab:\ \ ,trail:·  "Show invisibles
+set clipboard=unnamedplus            "Copy and paste to external buffer
+set modeline                         "Enable file settings override
+set relativenumber                   "Enable relative line numbers
+
+"No error bells or visual bells
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+    autocmd GUIEnter * set visualbell t_vb=
+endif
+
+"Search settings
+set incsearch                   "Find next match as you type the search string
+set hlsearch                    "Highlight searches by default
+set viminfo='100,f1             "Save up to 100 marks, enable capital marks
+set ignorecase                  "Ignore case when searching
+set smartcase                   "Figure out search case automatically
+set magic                       "Set magic on for regular expressions
+set showmatch                   "Show matching brackets when caret is over one
+set mat=2                       "How much time to blink when matching brackets
+
+"Indentation
+set autoindent                  "Auto indentation
+set smartindent                 "Indent in some cases
+set smarttab                    "Handle tabs correctly
+set shiftwidth=4                "Indent size
+set softtabstop=4               "Soft tab size
+set tabstop=4                   "Tab size
+set expandtab                   "Treat tab as spaces
+set nowrap                      "No line wrapping
+
+"Files, backups and undo
+set nobackup                    "No backups
+set nowb                        "Prevents automatic write backup
+set noswapfile                  "No file swaps
+
+"Character sets and files
+set encoding=utf8               "Set utf8 as standard encoding
+set ffs=unix,dos,mac            "Use Unix as the standard file type
+
+"File types
+filetype plugin on              "Load plugins
+filetype indent on              "Load indentation
+
+"Plugins
+let s:plugins_dir = '~/.dotfiles/vim/vim/plugins'
+call plug#begin(s:plugins_dir)
+
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+
+call plug#end()
+
+"Install plugins automatically if they are missing
+if !isdirectory(glob(s:plugins_dir))
+    PlugInstall
+endif
+
+"Plugin settings
+
+"NERDTree
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+map <C-n> <plug>NERDTreeTabsToggle<CR>
+
+"Disable arrow keys
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
+nnoremap tl     :tablast<CR>

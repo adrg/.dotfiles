@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+if [[ -f "$HOME/.gitconfig" ]]; then
+    info "git already configured"
+    exit 0
+fi
+
+# Git global configuration
+info "Setting up git configuration..."
+
+git_author=$(question "Author name: ")
+while [[ -z "$git_author" ]]; do
+    warning "Author name cannot be empty. Please try again."
+    git_author=$(question "Author name: ")
+done
+
+git_email=$(question "Author email: ")
+while [[ -z "$git_email" ]] || [[ "$git_email" != ?*@?*.?* ]]; do
+    warning "Not a valid email address. Please try again."
+    git_email=$(question "Author email: ")
+done
+
+git config --global user.name "$git_author"
+git config --global user.email "$git_email"
+git config --global color.ui true
+git config --global core.editor vim
+git config --global diff.tool vimdiff
+
+success "git successfully configured"

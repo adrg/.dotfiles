@@ -1,0 +1,190 @@
+#!/usr/bin/env bash
+
+function info() {
+    echo -e "\033[00;34mi\033[0m $1"
+}
+
+function warning() {
+    echo -e "\033[00;33m!\033[0m $1"
+}
+
+function success() {
+    echo -e "\033[00;32m✓\033[0m $1"
+}
+
+function fail() {
+    echo -e "\033[00;31m!\033[0m $1"
+    exit 1
+}
+
+function question() {
+    local answer=""
+    read -p "$(echo -e "\r\033[2K\033[00;39m?\033[0m $1")" answer
+    echo $answer
+}
+
+function check_installed() {
+    local old_ifs=$IFS;
+    IFS=",";
+
+    local to_install=()
+    for i in "$@"; do
+        set $i;
+
+        command -v $1 >/dev/null 2>&1 || {
+            local cmd=$1
+            if [[ ! -z  $2 ]]; then
+                cmd=$2
+            fi
+
+            to_install+=($cmd)
+        }
+    done
+
+    IFS=$old_ifs
+    echo ${to_install[@]}
+}
+
+export DOTFILES_DIR="$HOME/.dotfiles"
+
+export -f info
+export -f warning
+export -f success
+export -f fail
+export -f question
+export -f check_installed
+
+function process() {
+    for module in $(ls "$DOTFILES_DIR"); do
+        local module_path="$DOTFILES_DIR/$module"
+        if [[ ! -d "$module_path" ]]; then
+            continue
+        fi
+
+        info "Installing $module module"
+
+        local precmd="$module_path/.predot"
+        if [[ -f "$precmd" ]]; then
+            $precmd
+        fi
+
+        for dotfile in $(ls "$module_path"); do
+            local dotfile_path="$module_path/$dotfile"
+            if [[ ! -d "$dotfile_path" ]] && [[ ! -f "$dotfile_path" ]]; then
+                continue
+            fi
+
+            local dotlink="$HOME/.$dotfile"
+            info "Creating $dotlink"
+            ln -sfn "$dotfile_path" "$dotlink"
+        done
+
+        local postcmd="$module_path/.postdot"
+        if [[ -f "$postcmd" ]]; then
+            $postcmd
+        fi
+    done
+}
+
+function install() {
+    info "Installing dotfiles..."
+
+    # Required dependencies
+    local required=("git")
+
+    local to_install=$(check_installed ${required[@]})
+    if [[ ! -z $to_install ]]; then
+        info "Installing required dependencies..."
+
+        sudo apt-get install ${required[@]}
+        if [[ $? -ne 0 ]]; then
+            fail "Could not install required dependencies. Aborting."
+        fi
+
+        success "Required dependencies successfully installed"
+    fi
+
+    # Clone dotfiles
+    if [[ ! -d "$DOTFILES_DIR" ]]; then
+        info "\nCloning dotfiles..."
+
+        git clone https://github.com/adrg/.dotfiles.git "$DOTFILES_DIR"
+        if [[ $? -ne 0 ]]; then
+            fail "Could not clone dotfiles repository. Aborting."
+        fi
+    fi
+
+    process
+    success "Dotfiles successfully installed"
+}
+
+function upgrade() {
+    info "Upgrading dotfiles..."
+
+    cd $DOTFILES_DIR
+
+    git pull origin master
+    if [[ $? -ne 0 ]]; then
+        fail "Could not update dotfiles repository. Aborting."
+    fi
+
+    process
+    success "Dotfiles successfully upgraded"
+}
+
+function uninstall() {
+    info "Uninstalling dotfiles..."
+
+    for dotlink in $(ls -a "$HOME"); do
+        dotlink_path="$HOME/$dotlink"
+        if [[ ! -h "$dotlink_path" ]]; then
+            continue
+        fi
+
+        dotfile=$(readlink -f $dotlink_path)
+        if [[ ! "$dotfile" =~ ^"$DOTFILES_DIR"/* ]]; then
+            continue
+        fi
+
+        info "Removing $dotlink_path"
+        rm $dotlink_path
+    done
+
+    rm_dots=$(question "Do you want to remove dotfiles directory? [Y/n] ")
+    while [[ "$rm_dots" != "Y" ]] && [[ $rm_dots != "n" ]]; do
+        warning "Not a valid answer. Please try again."
+        rm_dots=$(question "Do you want to remove dotfiles directory? [Y/n] ")
+    done
+
+    if [[ "$rm_dots" == "Y" ]]; then
+        info "Removing $DOTFILES_DIR"
+        rm -rf $DOTFILES_DIR
+    fi
+
+    success "Dotfiles successfully uninstalled"
+}
+
+# Entry point
+USAGE="Usage: '$0 install|upgrade|uninstall'"
+
+if [[ $# -ne 1 ]] ; then
+    echo $USAGE
+    exit 1
+fi
+
+action=$1
+case $action in
+    "install")
+        install
+        ;;
+    "upgrade")
+        upgrade
+        ;;
+    "uninstall")
+        uninstall
+        ;;
+    *)
+        echo $USAGE
+        exit 1
+        ;;
+esac
