@@ -96,7 +96,7 @@ function install() {
     if [[ ! -z $to_install ]]; then
         info "Installing required dependencies..."
 
-        sudo apt-get install ${required[@]}
+        sudo apt-get install $to_install
         if [[ $? -ne 0 ]]; then
             fail "Could not install required dependencies. Aborting."
         fi
@@ -106,7 +106,7 @@ function install() {
 
     # Clone dotfiles
     if [[ ! -d "$DOTFILES_DIR" ]]; then
-        info "\nCloning dotfiles..."
+        info "Cloning dotfiles..."
 
         git clone https://github.com/adrg/.dotfiles.git "$DOTFILES_DIR"
         if [[ $? -ne 0 ]]; then
