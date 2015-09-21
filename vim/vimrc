@@ -74,6 +74,7 @@ call plug#begin(s:plugins_dir)
 
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'fatih/vim-go'
 
 call plug#end()
 
@@ -91,6 +92,9 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 map <C-n> <plug>NERDTreeTabsToggle<CR>
+
+"vim-go
+let g:go_fmt_command = "goimports"
 
 "Disable arrow keys
 noremap <Up>    <NOP>
