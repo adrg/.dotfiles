@@ -29,6 +29,7 @@ set clipboard=unnamedplus            "Copy and paste to external buffer
 set modeline                         "Enable file settings override
 set relativenumber                   "Enable relative line numbers
 set laststatus=2                     "Always show status line
+set t_Co=256                         "Enable 256 colors
 
 "No error bells or visual bells
 set noerrorbells visualbell t_vb=
@@ -62,7 +63,7 @@ set nowb                        "Prevents automatic write backup
 set noswapfile                  "No file swaps
 
 "Character sets and files
-set encoding=utf8               "Set utf8 as standard encoding
+set encoding=utf8 nobomb        "Set utf8 as standard encoding
 set ffs=unix,dos,mac            "Use Unix as the standard file type
 
 "File types
