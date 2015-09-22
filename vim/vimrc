@@ -79,6 +79,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'fatih/vim-go'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
