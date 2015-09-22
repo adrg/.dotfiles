@@ -90,7 +90,7 @@ function install() {
     info "Installing dotfiles..."
 
     # Required dependencies
-    local required=("git")
+    local required=("git curl")
 
     local to_install=$(check_installed ${required[@]})
     if [[ ! -z $to_install ]]; then

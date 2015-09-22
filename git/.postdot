@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ -f "$HOME/.git-completion.bash" ]]; then
+    info "git completion script already installed"
+    exit 0
+fi
+
+# Download vim plugin manager
+curl --create-dirs -sSf -o "$HOME/.git-completion.bash" \
+    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+if [[ $? -ne 0 ]]; then
+    fail "Could not download git completion script. Aborting."
+fi
+
+success "git completion script successfully installed"

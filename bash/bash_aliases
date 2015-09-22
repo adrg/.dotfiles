@@ -1,3 +1,8 @@
+# =================================================
+# = Author: Adrian-George Bostan <adi@fractor.ro> =
+# = Version: 1.0                                  =
+# =================================================
+
 # Enable color support for some commands
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -12,14 +17,39 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-#vim
+# cd
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# vim
 alias v='vim'
 alias vf='vim -p'
 
-#git
+# git
+alias g='git'
+alias gi='git init'
 alias gs='git status'
 alias gl='git log'
 alias gd='git diff'
 alias ga='git add'
-alias gc='git commit'
-alias gp='git push'
+alias gb='git branch'
+alias gc='git checkout'
+alias gcb='git checkout -b'
+alias gp='git pull'
+alias gm='git merge'
+alias gco='git commit'
+alias gps='git push'
+alias gra='git remote add'
+alias grr='git remote rm'
+
+# Add completion to git aliases
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+  __git_complete g   _git_main
+  __git_complete gb  _git_branch
+  __git_complete gc  _git_checkout
+  __git_complete gcb _git_checkout
+  __git_complete gm  _git_merge
+  __git_complete gp  _git_pull
+  __git_complete gps _git_push
+fi
