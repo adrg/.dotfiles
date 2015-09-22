@@ -28,6 +28,7 @@ set list listchars=tab:\ \ ,trail:·  "Show invisibles
 set clipboard=unnamedplus            "Copy and paste to external buffer
 set modeline                         "Enable file settings override
 set relativenumber                   "Enable relative line numbers
+set laststatus=2                     "Always show status line
 
 "No error bells or visual bells
 set noerrorbells visualbell t_vb=
@@ -67,6 +68,7 @@ set ffs=unix,dos,mac            "Use Unix as the standard file type
 "File types
 filetype plugin on              "Load plugins
 filetype indent on              "Load indentation
+syntax on                       "Enable syntax highlighting
 
 "Plugins
 let s:plugins_dir = '~/.dotfiles/vim/vim/plugins'
