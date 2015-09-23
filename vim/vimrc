@@ -79,6 +79,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'fatih/vim-go'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'hdima/python-syntax'
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
@@ -104,6 +105,9 @@ let g:go_fmt_command = "goimports"
 "vim cpp highlight
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
+
+"vim python highlight
+let python_highlight_all = 1
 
 "Disable arrow keys
 noremap <Up>    <NOP>
