@@ -21,6 +21,13 @@ alias l='ls -CF'
 alias ..='cd ..'
 alias ...='cd ../..'
 
+# apt-get
+alias apt-update='sudo apt-get update'
+alias apt-upgrade='sudo apt-get upgrade'
+alias apt-install='sudo apt-get install'
+alias apt-clean='sudo apt-get autoremove --purge'
+alias apt-search='sudo apt-cache search'
+
 # vim
 alias v='vim'
 alias vf='vim -p'
