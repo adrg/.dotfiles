@@ -56,8 +56,8 @@ case "$BLOCK_BUTTON" in
     1) amixer -q -D pulse sset Master 10%+ ;;
     2) amixer -q -D pulse sset Master toggle ;;
     3) amixer -q -D pulse sset Master 10%- ;;
-    4) amixer -q -D pulse sset Master 1%+ ;;
-    5) amixer -q -D pulse sset Master 1%- ;;
+    4) amixer -q -D pulse sset Master 5%+ ;;
+    5) amixer -q -D pulse sset Master 5%- ;;
 esac
 
 for name in INDEX NAME VOL MUTED; do
