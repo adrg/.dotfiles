@@ -1,6 +1,17 @@
+# =================================================
+# = Author: Adrian-George Bostan <adi@fractor.ro> =
+# = Version: 1.0                                  =
+# =================================================
+
 # --------------------
 # - I3 configuration -
 # --------------------
+
+# required by gnome-settings
+exec --no-startup-id /usr/bin/unity-settings-daemon
+
+# network manager
+exec --no-startup-id /usr/bin/nm-applet
 
 # set style for windows
 new_window pixel 1
@@ -10,7 +21,7 @@ workspace_auto_back_and_forth yes
 
 # set font for window titles
 font DejaVu Sans Mono 10
-font pango:DejaVu Sans Mono 10
+font pango: FontAwesome, 10
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #1e7b1e
@@ -133,10 +144,18 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# -----------------
+# - I3 status bar -
+# -----------------
+
 bar {
     position top
     status_command i3blocks
 }
+
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 10%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 10%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
 # -----------------------
 # - Custom key bindings -
@@ -153,7 +172,7 @@ bindsym $mod+Return exec gnome-terminal
 
 # start browser
 bindsym $mod+b exec google-chrome
-bindsym $mod+Shift+b exec google-chrome
+bindsym $mod+Shift+b exec google-chrome -incognito
 
- # start file manager
+# start file manager
 bindsym $mod+n exec nautilus --no-desktop

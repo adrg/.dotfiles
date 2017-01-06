@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-to_install=$(check_installed suckless-tools,i3,i3blocks)
+to_install=$(check_installed suckless-tools,fonts-font-awesome,i3,i3blocks)
 if [[ -z $to_install ]]; then
     info "i3 already installed"
     exit 0
