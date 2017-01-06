@@ -148,8 +148,12 @@ bindsym $mod+Escape exec slock
 # start dmenu
 bindsym $mod+o exec dmenu_run
 
-# start a terminal
+# start terminal
 bindsym $mod+Return exec gnome-terminal
 
-# start a browser
+# start browser
 bindsym $mod+b exec google-chrome
+bindsym $mod+Shift+b exec google-chrome
+
+ # start file manager
+bindsym $mod+n exec nautilus --no-desktop
