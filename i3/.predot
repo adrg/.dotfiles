@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+to_install=$(check_installed suckless-tools,i3,i3blocks)
+if [[ -z $to_install ]]; then
+    info "i3 already installed"
+    exit 0
+fi
+
+sudo apt-get install $to_install
+if [[ $? -ne 0 ]]; then
+    fail "Could not install $to_install. Aborting."
+fi
+
+success "$to_install successfully installed"
