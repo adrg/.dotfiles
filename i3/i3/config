@@ -162,7 +162,7 @@ bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN
 # -----------------------
 
 # lock screen
-bindsym $mod+Escape exec slock
+bindsym $mod+Mod1+l exec i3lock -efd -I 60 -c 002B36
 
 # start dmenu
 bindsym $mod+o exec dmenu_run
