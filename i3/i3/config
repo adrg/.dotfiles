@@ -3,15 +3,22 @@
 # = Version: 1.0                                  =
 # =================================================
 
-# --------------------
-# - I3 configuration -
-# --------------------
+# -----------
+# - Startup -
+# -----------
 
-# required by gnome-settings
+# gnome-settings
 exec --no-startup-id /usr/bin/unity-settings-daemon
 
 # network manager
 exec --no-startup-id /usr/bin/nm-applet
+
+# dropbox
+exec --no-startup-id dropbox start
+
+# -----------------
+# - Configuration -
+# -----------------
 
 # set style for windows
 new_window pixel 1
@@ -31,9 +38,9 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
-# -------------------
-# - I3 key bindings -
-# -------------------
+# ----------------
+# - Key bindings -
+# ----------------
 
 # set modifier key
 set $mod Mod4
@@ -193,9 +200,9 @@ bindsym $mod+Mod1+s $suspend_command
 # hibernate system
 bindsym $mod+Mod1+h $hibernate_command
 
-# -----------------
-# - I3 status bar -
-# -----------------
+# --------------
+# - Status bar -
+# --------------
 
 bar {
     position top
