@@ -10,7 +10,10 @@ fi
 
 # Set GOPATH
 if [ -d "$HOME/go" ]; then
-    PATH="$PATH:$HOME/go"
+    if [ -d "$HOME/go/bin" ]; then
+        PATH="$PATH:$HOME/go/bin"
+    fi
+
     export GOPATH="$HOME/go"
 fi
 
