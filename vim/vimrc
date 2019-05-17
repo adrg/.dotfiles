@@ -82,6 +82,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'hdima/python-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'kchmck/vim-coffee-script'
+Plug 'yosssi/vim-ace'
 
 call plug#end()
 
