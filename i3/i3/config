@@ -158,7 +158,7 @@ bindsym $mod+r mode "resize"
 # - System mode -
 # ---------------
 
-set $lock_command exec --no-startup-id i3lock -efd -I 60 -c 002B36
+set $lock_command exec --no-startup-id i3lock -efd -I 60 -c 000000
 set $logout_command exec --no-startup-id i3-msg exit
 set $reboot_command exec --no-startup-id systemctl reboot
 set $shutdown_command exec --no-startup-id systemctl poweroff
