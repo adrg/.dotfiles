@@ -30,6 +30,7 @@ set modeline                         "Enable file settings override
 set relativenumber                   "Enable relative line numbers
 set laststatus=2                     "Always show status line
 set t_Co=256                         "Enable 256 colors
+set mmp=10000                        "Set max memory pattern
 
 "No error bells or visual bells
 set noerrorbells visualbell t_vb=
