@@ -20,6 +20,7 @@ alias l='ls -CF'
 # cd
 alias ..='cd ..'
 alias ...='cd ../..'
+alias cdr='cd $(git rev-parse --show-toplevel)'
 
 # apt-get
 alias apt-update='sudo apt-get update'
