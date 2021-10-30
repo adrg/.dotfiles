@@ -87,6 +87,8 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'yosssi/vim-ace'
 Plug 'tpope/vim-fugitive'
 Plug 'tomasr/molokai'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
@@ -105,15 +107,18 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 map <C-n> <plug>NERDTreeTabsToggle<CR>
 
-"vim-go
+"go
 let g:go_fmt_command = "goimports"
 
-"vim cpp highlight
+"cpp
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
-"vim python highlight
+"python
 let python_highlight_all = 1
+
+"markdown
+let g:vim_markdown_folding_disabled = 1
 
 "Disable arrow keys
 noremap <Up>    <NOP>
