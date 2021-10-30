@@ -71,3 +71,7 @@ if [ -f ~/.git-completion.bash ]; then
   __git_complete gra _git_remote
   __git_complete grr _git_remote
 fi
+
+# Go
+alias govetall='go vet ./...; GOOS=windows go vet ./...; GOOS=darwin go vet ./...; GOOS=plan9 go vet ./...'
+alias golintall='golint ./...; GOOS=windows golint ./...; GOOS=darwin golint ./...; GOOS=plan9 golint ./...'
