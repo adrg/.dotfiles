@@ -79,6 +79,7 @@ fi
 # Go
 alias govetall='go vet ./...; GOOS=windows go vet ./...; GOOS=darwin go vet ./...; GOOS=plan9 go vet ./...'
 alias golintall='golint ./...; GOOS=windows golint ./...; GOOS=darwin golint ./...; GOOS=plan9 golint ./...'
+alias gomodauto='export GO111MODULE="auto"'
 
 # Misc
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
