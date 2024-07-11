@@ -35,6 +35,7 @@ alias apt-search='sudo apt-cache search'
 
 # vim
 alias v='vim'
+alias vi='vim'
 alias vp='vim -p'
 
 # git
