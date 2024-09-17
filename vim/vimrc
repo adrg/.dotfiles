@@ -144,3 +144,15 @@ endif
 
 set background=dark
 colorscheme molokai
+
+"clang
+function! ClangFormatOnSave()
+    let l:clang_format_script = "clang-format.py"
+    if !executable(l:clang_format_script)
+        return
+    endif
+
+    let l:lines="all"
+    execute 'py3f ' . exepath(l:clang_format_script)
+endfunction
+autocmd BufWritePre *.h,*.hpp,*.cc,*.cpp call ClangFormatOnSave()

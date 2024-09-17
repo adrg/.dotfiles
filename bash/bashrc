@@ -19,9 +19,6 @@ fi
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Enable 256 color mode
-export TERM="screen-256color"
-
 # Auto start tmux, if available
 [ -z "$TMUX" ] && which tmux > /dev/null && exec tmux
 
