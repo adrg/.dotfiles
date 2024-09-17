@@ -102,7 +102,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 # Functions.
 randstr() {
-    len=32
+    len="${1:-32}"
     if [ $# -gt 0 ]
     then
         len=$1
