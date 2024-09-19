@@ -55,7 +55,7 @@ AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
-AlwaysBreakTemplateDeclarations: MultiLine
+AlwaysBreakTemplateDeclarations: Yes
 AttributeMacros:
   - __capability
 BinPackArguments: true
@@ -152,7 +152,7 @@ MacroBlockBegin: ''
 MacroBlockEnd: ''
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: All
-PackConstructorInitializers: Never
+PackConstructorInitializers: CurrentLine
 PenaltyBreakAssignment: 1000
 PenaltyBreakBeforeFirstCallParameter: 1000
 PenaltyBreakComment: 300
@@ -163,7 +163,7 @@ PenaltyBreakString: 1000
 PenaltyBreakTemplateDeclaration: 10
 PenaltyExcessCharacter: 1000000
 PenaltyIndentedWhitespace: 0
-PenaltyReturnTypeOnItsOwnLine: 0
+PenaltyReturnTypeOnItsOwnLine: 1000
 PointerAlignment: Left
 PPIndentWidth: -1
 QualifierAlignment: Leave
