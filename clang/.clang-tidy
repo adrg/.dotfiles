@@ -1,0 +1,75 @@
+---
+Checks:
+  # clang-diagnostic
+  - 'clang-diagnostic-*'
+
+  # clang-analyzer
+  - 'clang-analyzer-*'
+  - '-clang-analyzer-apiModeling.*'
+  - '-clang-analyzer-fuchsia.*'
+  - '-clang-analyzer-optin.mpi.MPI-Checker'
+  - '-clang-analyzer-optin.osx.*'
+  - '-clang-analyzer-optin.portability.UnixAPI'
+  - '-clang-analyzer-osx.*'
+  - '-clang-analyzer-unix.*'
+  - '-clang-analyzer-webkit.*'
+
+  # bugprone
+  - 'bugprone-*'
+
+  # cert
+  - 'cert-*'
+  - '-cert-err58-cpp'
+
+  # concurrency
+  - 'concurrency-*'
+
+  # cppcoreguidelines
+  - 'cppcoreguidelines-*'
+
+  # google
+  - 'google-*'
+  - '-google-explicit-constructor'
+  - '-google-objc-*'
+  - '-google-readability-avoid-underscore-in-googletest-name'
+  - '-google-readability-namespace-comments'
+  - '-google-readability-todo'
+  - '-google-upgrade-googletest-case'
+
+  # hicpp
+  - 'hicpp-*'
+  - '-hicpp-explicit-conversions'
+
+  # misc
+  - 'misc-*'
+
+  # modernize
+  - 'modernize-*'
+  - '-modernize-use-nodiscard'
+
+  # performance
+  - 'performance-*'
+
+  # portability
+  - 'portability-*'
+WarningsAsErrors: ''
+HeaderFileExtensions:
+  - ''
+  - h
+  - hh
+  - hpp
+  - hxx
+ImplementationFileExtensions:
+  - c
+  - cc
+  - cpp
+  - cxx
+HeaderFilterRegex: ''
+SystemHeaders: false
+FormatStyle: none
+InheritParentConfig: false
+User: 'adrg'
+CheckOptions:
+  misc-non-private-member-variables-in-classes.IgnorePublicMemberVariables: true
+  modernize-pass-by-value.ValuesOnly: true
+...
