@@ -23,7 +23,7 @@ set hid                              "Buffer becomes invisible when abandoned
 set undolevels=1000                  "Undo levels remembered
 set cpoptions+=$                     "Use $ delimiter to mark change' end
 set wildmenu                         "Make the command line completion better
-set colorcolumn=80                   "80th column marked
+set colorcolumn=80,120               "Mark columns 80 and 120
 set list listchars=tab:\ \ ,trail:·  "Show invisibles
 set clipboard=unnamedplus            "Copy and paste to external buffer
 set modeline                         "Enable file settings override
