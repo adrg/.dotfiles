@@ -42,7 +42,7 @@ AlignTrailingComments:
   Kind: Always
   OverEmptyLines: 0
 AllowAllArgumentsOnNextLine: false
-AllowAllParametersOfDeclarationOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: true
 AllowBreakBeforeNoexceptSpecifier: Never
 AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
@@ -59,7 +59,7 @@ AlwaysBreakTemplateDeclarations: Yes
 AttributeMacros:
   - __capability
 BinPackArguments: false
-BinPackParameters: false
+BinPackParameters: true
 BitFieldColonSpacing: Both
 BraceWrapping:
   AfterCaseLabel: false
@@ -154,15 +154,15 @@ MaxEmptyLinesToKeep: 1
 NamespaceIndentation: All
 PackConstructorInitializers: NextLine
 PenaltyBreakAssignment: 1000
-PenaltyBreakBeforeFirstCallParameter: 1000
+PenaltyBreakBeforeFirstCallParameter: 100
 PenaltyBreakComment: 300
-PenaltyBreakFirstLessLess: 120
-PenaltyBreakOpenParenthesis: 1000
+PenaltyBreakFirstLessLess: 100
+PenaltyBreakOpenParenthesis: 100
 PenaltyBreakScopeResolution: 1000
-PenaltyBreakString: 1000
+PenaltyBreakString: 10000
 PenaltyBreakTemplateDeclaration: 10
 PenaltyExcessCharacter: 1000000
-PenaltyIndentedWhitespace: 0
+PenaltyIndentedWhitespace: 10
 PenaltyReturnTypeOnItsOwnLine: 1000
 PointerAlignment: Left
 PPIndentWidth: -1
