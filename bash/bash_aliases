@@ -18,7 +18,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # grep
-alias grep='grep --color=always'
+alias grepc='grep --color=always'
 
 # cd
 alias ..='cd ..'
