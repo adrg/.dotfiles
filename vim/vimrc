@@ -155,4 +155,4 @@ function! ClangFormatOnSave()
     let l:lines="all"
     execute 'py3f ' . exepath(l:clang_format_script)
 endfunction
-autocmd BufWritePre *.h,*.hpp,*.cc,*.cpp call ClangFormatOnSave()
+autocmd BufWritePre *.h,*.hpp,*.c,*.cc,*.cpp call ClangFormatOnSave()
