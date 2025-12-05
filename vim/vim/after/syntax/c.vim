@@ -1,4 +1,6 @@
-syn keyword	cType uchar ushort uint ulong ulonglong
+syn keyword	cType byte
+syn keyword	cType llong
+syn keyword	cType uchar ushort uint ulong ullong ulonglong
 syn keyword	cType isize usize
 syn keyword	cType iptr uptr
 syn keyword	cType i8 i16 i32 i64 i128
