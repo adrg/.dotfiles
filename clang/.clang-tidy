@@ -1,75 +1,37 @@
 ---
 Checks:
-  # clang-diagnostic
-  - 'clang-diagnostic-*'
-
-  # clang-analyzer
-  - 'clang-analyzer-*'
-  - '-clang-analyzer-apiModeling.*'
-  - '-clang-analyzer-fuchsia.*'
-  - '-clang-analyzer-optin.mpi.MPI-Checker'
-  - '-clang-analyzer-optin.osx.*'
-  - '-clang-analyzer-optin.portability.UnixAPI'
-  - '-clang-analyzer-osx.*'
-  - '-clang-analyzer-unix.*'
-  - '-clang-analyzer-webkit.*'
-
-  # bugprone
-  - 'bugprone-*'
-
-  # cert
-  - 'cert-*'
-  - '-cert-err58-cpp'
-
-  # concurrency
-  - 'concurrency-*'
-
-  # cppcoreguidelines
-  - 'cppcoreguidelines-*'
-
-  # google
-  - 'google-*'
-  - '-google-explicit-constructor'
-  - '-google-objc-*'
-  - '-google-readability-avoid-underscore-in-googletest-name'
-  - '-google-readability-namespace-comments'
-  - '-google-readability-todo'
-  - '-google-upgrade-googletest-case'
-
-  # hicpp
-  - 'hicpp-*'
-  - '-hicpp-explicit-conversions'
-
-  # misc
-  - 'misc-*'
-
-  # modernize
-  - 'modernize-*'
-  - '-modernize-use-nodiscard'
-
-  # performance
-  - 'performance-*'
-
-  # portability
-  - 'portability-*'
+  - '*'
+  - '-altera-*'
+  - '-bugprone-easily-swappable-parameters'
+  - '-cert-int09-c'
+  - '-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling'
+  - '-clang-diagnostic-format-nonliteral'
+  - '-cppcoreguidelines-avoid-non-const-global-variables'
+  - '-llvm-*'
+  - '-llvmlibc-*'
+  - '-misc-confusable-identifiers'
+  - '-misc-include-cleaner'
+  - '-misc-use-internal-linkage'
+  - '-readability-avoid-nested-conditional-operator'
+  - '-readability-enum-initial-value'
+  - '-readability-function-cognitive-complexity'
+  - '-readability-identifier-length'
+  - '-readability-implicit-bool-conversion'
+  - '-readability-isolate-declaration'
+  - '-readability-use-concise-preprocessor-directives'
 WarningsAsErrors: ''
 HeaderFileExtensions:
-  - ''
   - h
-  - hh
-  - hpp
-  - hxx
 ImplementationFileExtensions:
   - c
-  - cc
-  - cpp
-  - cxx
-HeaderFilterRegex: ''
+HeaderFilterRegex: '.*'
 SystemHeaders: false
 FormatStyle: none
 InheritParentConfig: false
 User: 'adrg'
 CheckOptions:
-  misc-non-private-member-variables-in-classes.IgnorePublicMemberVariables: true
-  modernize-pass-by-value.ValuesOnly: true
+  cppcoreguidelines-avoid-non-const-global-variables.AllowInternalLinkage: true
+  cppcoreguidelines-avoid-magic-numbers.IgnoredIntegerValues: '0;1;2;3;4;5;6;7;8;'
+  hicpp-signed-bitwise.IgnorePositiveIntegerLiterals: true
+  readability-magic-numbers.IgnoredIntegerValues: '0;1;2;3;4;5;6;7;8;'
 ...
