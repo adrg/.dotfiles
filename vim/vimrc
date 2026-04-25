@@ -91,6 +91,7 @@ Plug 'tomasr/molokai'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'sheerun/vim-polyglot'
+Plug 'yegappan/lsp'
 
 call plug#end()
 
@@ -108,6 +109,31 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 map <C-n> <plug>NERDTreeTabsToggle<CR>
+
+"LSP
+let lspOpts = #{
+\   showDiagOnStatusLine: v:true,
+\}
+autocmd User LspSetup call LspOptionsSet(lspOpts)
+
+"c
+let lspServers = [#{
+\   name: 'clangd',
+\   filetype: ['h', 'c'],
+\   path: 'clangd',
+\   args: ['--background-index']
+\}]
+autocmd User LspSetup call LspAddServer(lspServers)
+
+autocmd User LspAttached {
+    nnoremap <buffer> <silent> gd <cmd>LspGotoDefinition<cr>
+    nnoremap <buffer> <silent> K  <cmd>LspHover<cr>
+    nnoremap <buffer> <silent> [d <cmd>LspDiag prev<cr>
+    nnoremap <buffer> <silent> ]d <cmd>LspDiag next<cr>
+}
+
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 "go
 let g:go_fmt_command = "goimports"
